@@ -6,9 +6,9 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
-use Hash;
-use JWTAuth;
+use Illuminate\Support\Facades\Hash;
 use App\Recipe;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class RecipeTest extends TestCase
 {
@@ -17,19 +17,14 @@ class RecipeTest extends TestCase
     //Create a user and authenticate him
     protected function authenticate(){
         $user = User::create([
-            'name' => 'tt',
-            'email' => 'tt@gmail.com',
-            'password' => bcrypt('secret1234¡£@$oaijsdca'),
+            'name' => 'test',
+            'email' => 'test@gmail.com',
+            'password' => Hash::make('secret1234'),
         ]);
+        $this->user = $user;
+        $token = JWTAuth::fromUser($user);
 
-        $response = $this->json('POST',route('api.authenticate'),[
-            'email' => 'tt@gmail.com',
-            'password' => 'secret1234',
-        ]);
-        $json = $response->json('token');
-        //$token = JWTAuth::fromUser($user);
-
-        return $json;
+        return $token;
     }
     //Test the create route
     public function testCreate()
