@@ -1,3 +1,31 @@
+## About this repo
+This repo is done by following the tutorial:
+https://medium.freecodecamp.org/how-to-build-a-laravel-rest-api-with-test-driven-development-c4bb6417db3c
+
+When I followed it initially I came through some mistakes. Mainly due to the jwt package.
+What I did was to compare my repo to his.
+Follow this to learn more how:
+https://stackoverflow.com/questions/1968512/getting-the-difference-between-two-repositories
+
+# Recap:
+
+In repo_a:
+
+git remote add -f b path/to/repo_b.git
+git remote update
+git diff master remotes/b/master
+git remote rm b
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
