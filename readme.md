@@ -7,13 +7,15 @@ What I did was to compare my repo to his.
 Follow this to learn more how:
 https://stackoverflow.com/questions/1968512/getting-the-difference-between-two-repositories
 
-# Recap:
-
-In repo_a:
+Recap
+Run the following commands n repo_a: 
 
 git remote add -f b path/to/repo_b.git
+
 git remote update
+
 git diff master remotes/b/master
+
 git remote rm b
 
 
