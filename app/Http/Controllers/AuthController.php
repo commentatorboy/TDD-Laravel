@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\User;
-use Hash;
-use JWTAuth;
-
+use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -16,8 +13,8 @@ class AuthController extends Controller
         $this->validate($request,['email' => 'required|email','password'=> 'required']);
         //Attempt validation
         $credentials = $request->only(['email','password']);
-        if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Incorrect credentials'], 401);
         }
         return response()->json(compact('token'));
     }
